@@ -5,25 +5,19 @@ import { useRouter } from 'next/navigation';
 import { 
   Box,
   Button,
-  Checkbox,
-  FormControlLabel,
-  Divider,
   FormLabel,
   FormControl,
   TextField,
   Typography,
   Stack,
-  Slider,
   Card as MuiCard
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import Link from '@mui/material/Link';
 
 import AppTheme from '@/components/common/AppTheme';
 import ColorModeSelect from '@/components/ColorModeSelect';
 
-import ForgotPassword from '@/components/login/ForgetPassword';
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from '@/components/login/CustomIcons';
+import { SitemarkIcon } from '@/components/login/CustomIcons';
 
 // ---- UI
 

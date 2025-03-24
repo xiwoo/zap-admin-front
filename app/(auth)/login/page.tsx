@@ -7,13 +7,11 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
-  Divider,
   FormLabel,
   FormControl,
   TextField,
   Typography,
   Stack,
-  Slider,
   Card as MuiCard
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -23,7 +21,7 @@ import AppTheme from '@/components/common/AppTheme';
 import ColorModeSelect from '@/components/ColorModeSelect';
 
 import ForgotPassword from '@/components/login/ForgetPassword';
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from '@/components/login/CustomIcons';
+import { SitemarkIcon } from '@/components/login/CustomIcons';
 
 // ---- UI
 
@@ -223,37 +221,6 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
               Forgot your password?
             </Link>
           </Box>
-          {/* 
-          <Divider>or</Divider>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert('Sign in with Google')}
-              startIcon={<GoogleIcon />}
-            >
-              Sign in with Google
-            </Button>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert('Sign in with Facebook')}
-              startIcon={<FacebookIcon />}
-            >
-              Sign in with Facebook
-            </Button>
-            <Typography sx={{ textAlign: 'center' }}>
-              Don&apos;t have an account?{' '}
-              <Link
-                href="/material-ui/getting-started/templates/sign-in/"
-                variant="body2"
-                sx={{ alignSelf: 'center' }}
-              >
-                Sign up
-              </Link>
-            </Typography>
-          </Box> 
-          */}
         </Card>
       </SignInContainer>
     </AppTheme>
