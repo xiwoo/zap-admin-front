@@ -67,7 +67,7 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export default function SignIn(props: { disableCustomTheme?: boolean }) {
+export default function SignIn( props: { disableCustomTheme?: boolean | undefined }) {
 
   const router = useRouter();
 
