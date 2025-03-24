@@ -24,9 +24,9 @@ import {
   treeViewCustomizations,
 } from '@/components/dashboard/theme/customizations';
 
-export default function Dashboard(props: { disableCustomTheme?: boolean }) {
+export default function Dashboard() {
   return (
-    <AppTheme {...props} themeComponents={({
+    <AppTheme themeComponents={({
       ...chartsCustomizations,
       ...dataGridCustomizations,
       ...datePickersCustomizations,

@@ -63,7 +63,7 @@ const PasswordChangeContainer = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export default function ChangePassword(props: { disableCustomTheme?: boolean }) {
+export default function ChangePassword( ) {
 
   const router = useRouter();
   const [prevPasswordError, setPrevPasswordError] = React.useState(false);
@@ -126,7 +126,7 @@ export default function ChangePassword(props: { disableCustomTheme?: boolean }) 
 
   return (
 
-    <AppTheme {...props}>{/* TODO: 나중에 login 화면에 있는 내용과 합치자. SSR 로 그려지도록 */}
+    <AppTheme >{/* TODO: 나중에 login 화면에 있는 내용과 합치자. SSR 로 그려지도록 */}
       <PasswordChangeContainer direction="column" justifyContent="space-between">
         <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
         <Card variant="outlined">

@@ -67,7 +67,7 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export default function SignIn( props: { disableCustomTheme?: boolean | undefined }) {
+export default function SignIn( ) {
 
   const router = useRouter();
 
@@ -142,7 +142,7 @@ export default function SignIn( props: { disableCustomTheme?: boolean | undefine
   };
 
   return (
-    <AppTheme {...props}>
+    <AppTheme >
       <SignInContainer direction="column" justifyContent="space-between">
         <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
         <Card variant="outlined">
