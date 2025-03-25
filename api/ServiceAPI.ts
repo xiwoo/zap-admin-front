@@ -1,7 +1,7 @@
 
 export default class ServiceAPI {
-  // static _SERVICE_API_ADDRESS = "https://dev.devxiwoo.com";
-  static _SERVICE_API_ADDRESS = "http://localhost:8080";
+
+  static _SERVICE_API_ADDRESS = process.env.NEXT_PUBLIC_API_URL;
 
   static handleResponse = async <T>(response: Response): Promise<T> => {
     if (!response.ok) {
