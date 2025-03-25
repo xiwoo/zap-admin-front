@@ -8,16 +8,13 @@ import {
 import { styled } from '@mui/material/styles';
 import MuiDrawer, { drawerClasses } from '@mui/material/Drawer';
 
-import {
-  HomeRounded, AnalyticsRounded, PeopleRounded, AssignmentRounded,
-} from '@mui/icons-material';
-
 import MenuContent from '../MenuContent';
 import CardAlert from '../CardAlert';
 
 import SelectContent from './SelectContent';
 import OptionsMenu from './OptionsMenu';
 
+import { ListMenu } from '@/types';
 
 const drawerWidth = 240;
 
@@ -32,25 +29,7 @@ const Drawer = styled(MuiDrawer)({
   },
 });
 
-export default function SideMenu() {
-
-  const mainListItems = [
-    { id: 0, text: 'Home', icon: <HomeRounded /> },
-    { 
-      id: 1, text: '회원관리', icon: <AnalyticsRounded />,
-      childrenMenu: [
-        { id: 4, text: '신규 가입자 목록 조회', icon: <AssignmentRounded /> },
-        { id: 5, text: '회원 정보 조회', icon: <AssignmentRounded /> },
-        { id: 6, text: '신고 회원 조회', icon: <AssignmentRounded /> },
-      ],
-    },
-    { id: 2, text: '상품관리', icon: <PeopleRounded />,
-      childrenMenu: [
-        { id: 7, text: '결제 상품 관리', icon: <AssignmentRounded /> }
-      ]
-    },
-    { id: 3, text: '관리자 관리', icon: <AssignmentRounded />, },
-  ];
+const SideMenu = ( { listMenu }: { listMenu: ListMenu[] } ) => {
 
   return (
     <Drawer
@@ -80,7 +59,7 @@ export default function SideMenu() {
           flexDirection: 'column',
         }}
       >
-        <MenuContent listMenu={mainListItems} />
+        <MenuContent listMenu={listMenu} />
         {/* <CardAlert /> */}
       </Box>
       <Stack
@@ -112,3 +91,5 @@ export default function SideMenu() {
     </Drawer>
   );
 }
+
+export default SideMenu;

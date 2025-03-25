@@ -94,8 +94,8 @@ export default function SignIn( ) {
     const data = new FormData(event.currentTarget);
 
     const { loginStatus, error } = await AdminsAuthAPI.postLogin({ 
-      identify: data.get('identify'),
-      password: data.get('password'),
+      identify: data.get('identify')!!.toString(),
+      password: data.get('password')!!.toString(),
     });
     
     console.log(loginStatus);

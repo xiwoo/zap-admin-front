@@ -9,6 +9,6 @@ export default class ServiceAPI {
     }
     
     // console.log(`response: `, response)
-    return await response.json<T>();
+    return await response.json() as T;
   }
 }

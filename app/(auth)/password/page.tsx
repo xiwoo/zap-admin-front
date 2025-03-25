@@ -81,8 +81,8 @@ export default function ChangePassword( ) {
     const data = new FormData(event.currentTarget);
 
     const changePasswordResult = await AdminsAuthAPI.postChangePassword({ 
-      prevPassword: data.get('prevPassword'),
-      nextPassword: data.get('nextPassword'),
+      prevPassword: data.get('prevPassword')!!.toString(),
+      nextPassword: data.get('nextPassword')!!.toString(),
     });
     console.log(changePasswordResult);
     // TODO: 이전 비번 틀렸을 떄 알림처리
@@ -156,10 +156,8 @@ export default function ChangePassword( ) {
                 helperText={prevPasswordErrorMessage}
                 id="prevPassword"
                 name="prevPassword"
-                type="text"
                 placeholder="••••••"
                 type="password"
-                // autoComplete="email"
                 autoFocus
                 required
                 fullWidth
@@ -174,10 +172,8 @@ export default function ChangePassword( ) {
                 helperText={passwordErrorMessage}
                 id="nextPassword"
                 name="nextPassword"
-                type="text"
                 placeholder="••••••"
                 type="password"
-                // autoComplete="email"
                 autoFocus
                 required
                 fullWidth

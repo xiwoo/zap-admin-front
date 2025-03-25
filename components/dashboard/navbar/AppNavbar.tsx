@@ -1,19 +1,26 @@
-// 'use client'
+
 import * as React from 'react';
+
 import { styled } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import MuiToolbar from '@mui/material/Toolbar';
 import { tabsClasses } from '@mui/material/Tabs';
-import Typography from '@mui/material/Typography';
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
+
+import {
+  AppBar,
+  Box,
+  Stack,
+  Toolbar,
+  Typography,
+} from '@mui/material';
+
+import { MenuRounded, DashboardRounded } from '@mui/icons-material';
+
 import SideMenuMobile from './SideMenuMobile';
 import MenuButton from '../MenuButton';
 import ColorModeIconDropdown from '@/components/ColorModeIconDropdown';
 
-const Toolbar = styled(MuiToolbar)({
+import { ListMenu } from '@/types';
+
+const MuiToolbar = styled(Toolbar)({
   width: '100%',
   padding: '12px',
   display: 'flex',
@@ -28,8 +35,8 @@ const Toolbar = styled(MuiToolbar)({
     pb: 0,
   },
 });
+const AppNavbar = ( { listMenu }: { listMenu: ListMenu[] } ) => {
 
-export default function AppNavbar() {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -49,7 +56,7 @@ export default function AppNavbar() {
         top: 'var(--template-frame-height, 0px)',
       }}
     >
-      <Toolbar variant="regular">
+      <MuiToolbar variant="regular">
         <Stack
           direction="row"
           sx={{
@@ -71,11 +78,11 @@ export default function AppNavbar() {
           </Stack>
           <ColorModeIconDropdown />
           <MenuButton aria-label="menu" onClick={toggleDrawer(true)}>
-            <MenuRoundedIcon />
+            <MenuRounded />
           </MenuButton>
-          <SideMenuMobile open={open} toggleDrawer={toggleDrawer} />
+          <SideMenuMobile listMenu={listMenu} open={open} toggleDrawer={toggleDrawer} />
         </Stack>
-      </Toolbar>
+      </MuiToolbar>
     </AppBar>
   );
 }
@@ -100,7 +107,8 @@ export function CustomIcon() {
         boxShadow: 'inset 0 2px 5px rgba(255, 255, 255, 0.3)',
       }}
     >
-      <DashboardRoundedIcon color="inherit" sx={{ fontSize: '1rem' }} />
+      <DashboardRounded color="inherit" sx={{ fontSize: '1rem' }} />
     </Box>
   );
 }
+export default AppNavbar;

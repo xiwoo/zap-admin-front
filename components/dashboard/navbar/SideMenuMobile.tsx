@@ -10,14 +10,16 @@ import {
 } from '@mui/icons-material';
 import MenuButton from '../MenuButton';
 import MenuContent from '../MenuContent';
-import CardAlert from '../CardAlert';
+
+import { ListMenu } from '@/types';
 
 interface SideMenuMobileProps {
+  listMenu: ListMenu[];
   open: boolean | undefined;
   toggleDrawer: (newOpen: boolean) => () => void;
 }
 
-export default function SideMenuMobile({ open, toggleDrawer }: SideMenuMobileProps) {
+export default function SideMenuMobile({ listMenu, open, toggleDrawer }: SideMenuMobileProps) {
   return (
     <Drawer
       anchor="right"
@@ -58,7 +60,7 @@ export default function SideMenuMobile({ open, toggleDrawer }: SideMenuMobilePro
         </Stack>
         <Divider />
         <Stack sx={{ flexGrow: 1 }}>
-          <MenuContent />
+          <MenuContent listMenu={listMenu}/>
           <Divider />
         </Stack>
         {/* <CardAlert /> */}

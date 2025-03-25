@@ -1,27 +1,13 @@
 import 'server-only'
-import { cookies } from 'next/headers'
-import { jwtVerify, decodeJwt } from 'jose'
-// import { SessionPayload } from '@/app/lib/definitions'
+import { cookies } from 'next/headers';
+import { decodeJwt, JWTPayload } from 'jose';
  
-const secretKey = process.env.SESSION_SECRET
-const encodedKey = new TextEncoder().encode(secretKey)
  
-// export async function encrypt(payload: SessionPayload) {
-//   return new SignJWT(payload)
-//     .setProtectedHeader({ alg: 'HS256' })
-//     .setIssuedAt()
-//     .setExpirationTime('7d')
-//     .sign(encodedKey)
-// }
- 
-export const decrypt = async (jwt: string | undefined = ''): JWTPayload | null => {
+export const decrypt = async (jwt: string | undefined = ''): Promise<JWTPayload | null> => {
   
   console.log(`decrypt > jwt: ${jwt}`);
 
   try {
-    // const { payload } = await jwtVerify(jwt, encodedKey, {
-    //   algorithms: ['HS256'],
-    // })
     return decodeJwt(jwt);
   } catch (error) {
     console.log('decrypt > Failed to verify session')

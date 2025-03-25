@@ -12,9 +12,7 @@ import {
   SettingsRounded, InfoRounded, HelpRounded, ExpandLess, ExpandMore,
 } from '@mui/icons-material';
 
-interface ListMenu {
-  id: number, text: string, icon: React.Component, childrenMenu?: ListMenu[]
-}
+import { ListMenu } from '@/types';
 
 const secondaryListItems = [
   { text: 'Settings', icon: <SettingsRounded /> },
@@ -22,7 +20,7 @@ const secondaryListItems = [
   { text: 'Feedback', icon: <HelpRounded /> },
 ];
 
-const createListMenu = (item: ListMenu, idx: number, menuOpenState: [ Object, Function ], handleClick: Function) => {
+const createListMenu = (item: ListMenu, idx: number, menuOpenState: [ Record<number, boolean>, Function ], handleClick: Function) => {
 
   const { id, text, icon } = item;
   const [ menuOpen, setMenuOpen ] = menuOpenState;
@@ -59,23 +57,23 @@ const createListMenu = (item: ListMenu, idx: number, menuOpenState: [ Object, Fu
   )
 }
 
-const collectMenuIds = (menuList: ListMenu[]) => {
-  return menuList.reduce((acc, item) => {
+const collectMenuIds = (menuList: ListMenu[]): number[] => {
+  return menuList.reduce((acc: number[], item) => {
     acc.push(item.id);  // 현재 항목의 id 추가
-    if (item.childrenMenu) {// 자식 메뉴가 있으면 자식 메뉴의 id도 추가
+    if (item.childrenMenu) { // 자식 메뉴가 있으면 자식 메뉴의 id도 추가
       item.childrenMenu.forEach(child => acc.push(child.id));
     }
     return acc;
   }, []);
 }
 
-const MainContent = ({ listMenu }: { listMenu: ListMenu[] } ) => {
+const MainContent = ( { listMenu }: { listMenu: ListMenu[] } ) => {
 
-  const menuOpenState = React.useState(collectMenuIds(listMenu).reduce((obj, id) => ({...obj, [id]: false}), {}))
+  const menuOpenState = React.useState<Record<number, boolean>>( collectMenuIds(listMenu).reduce((obj, id) => ({...obj, [id]: false}), {}) );
 
   const [ menuOpen, setMenuOpen ] = menuOpenState;
 
-  const handleClick = (openId) => {
+  const handleClick = (openId: number) => {
     setMenuOpen({
       ...menuOpen,
       [openId]: !menuOpen[openId]
