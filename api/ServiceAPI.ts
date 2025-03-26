@@ -11,4 +11,8 @@ export default class ServiceAPI {
     // console.log(`response: `, response)
     return await response.json() as T;
   }
+
+  static getCookie = (name: string): Promise<string | undefined> => {
+    throw Error('required Override Method');
+  }
 }

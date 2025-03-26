@@ -1,5 +1,5 @@
-import ky, { HTTPError } from 'ky';
-import ServiceAPI from '../ServiceAPI';
+import { HTTPError } from 'ky';
+import ClientServiceAPI from './ClientServiceAPI';
 
 interface LoginReq {
   identify: string;
@@ -18,13 +18,24 @@ interface PasswordFormReq {
   nextPassword: string;
 }
 
-class AdminsAuthAPI extends ServiceAPI {
+/**
+ * 
+ * /admin/auth client 호출 시 적용
+ * 
+ */
+export default class AdminsAuthAPI extends ClientServiceAPI {
+
+  static AUTH_API_KY = super.SERVICE_KY.extend(options => ({ 
+    ...options, 
+    prefixUrl: `${options.prefixUrl}/admin/auth` 
+  }));
 
   static postLogin = async (credentials: LoginReq): Promise<LoginResp> => {
+    
     try {
-      const response = await ky.post<string>(
-        `${super._SERVICE_API_ADDRESS}/admin/auth/v1/login`, 
-        { credentials: 'include', json: credentials },
+
+      const response = await this.AUTH_API_KY.post<string>(
+        `v1/login`, { credentials: 'include', json: credentials },
       );
       
       return {
@@ -32,6 +43,8 @@ class AdminsAuthAPI extends ServiceAPI {
       }
     }
     catch ( error ) {
+
+      console.log(error);
       
       let errorMessage = "서버 오류입니다. 관리자에 문의하세요";
 
@@ -66,9 +79,8 @@ class AdminsAuthAPI extends ServiceAPI {
   static postChangePassword = async (passwordForm: PasswordFormReq) => {
 
     try {
-      const response = await ky.post<string>(
-        `${super._SERVICE_API_ADDRESS}/admin/auth/v1/change/password`, 
-        { credentials: 'include', json: passwordForm },
+      const response = await this.AUTH_API_KY.post<string>(
+        `v1/change/password`, { json: passwordForm },
       );
       
       return {
@@ -82,5 +94,3 @@ class AdminsAuthAPI extends ServiceAPI {
   }
 
 }
-
-export default AdminsAuthAPI;

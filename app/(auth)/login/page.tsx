@@ -25,7 +25,7 @@ import { SitemarkIcon } from '@/components/login/CustomIcons';
 
 // ---- UI
 
-import AdminsAuthAPI from '@/api/client/adminsAuth';
+import AdminsAuthAPI from '@/api/client/AdminsAuthAPI';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
