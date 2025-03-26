@@ -6,3 +6,16 @@ export interface ListMenu {
   icon: React.ReactNode; 
   childrenMenu?: ListMenu[];
 }
+
+
+export interface LoginReq {
+  identify: string;
+  password: string;
+}
+
+export interface LoginResp {
+  loginStatus: string;
+  error?: {
+    message: string;
+  };
+}

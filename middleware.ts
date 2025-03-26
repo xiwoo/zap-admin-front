@@ -5,7 +5,7 @@ import { cookies } from 'next/headers'
 // 1. Specify protected and public routes
 const protectedRoutes = ['/']
 const publicRoutes = [
-  '/login', //'/password',
+  '/login', '/login/api', //'/password',
   // '/',
 ];
  
@@ -15,13 +15,13 @@ export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
 
   console.log(`path: ${path}`)
-  
+
   const isProtectedRoute = protectedRoutes.includes(path)
   const isPublicRoute = publicRoutes.includes(path)
 
   // 3. Decrypt the session from the cookie
   const jwt = (await cookies()).get('JWT')?.value
-  const session = await decrypt(jwt)
+  const session = jwt ? await decrypt(jwt) : null
  
   // 4. Redirect to /login if the user is not authenticated
   if (isProtectedRoute && !session?.id) {

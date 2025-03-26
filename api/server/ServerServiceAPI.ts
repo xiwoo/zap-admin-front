@@ -6,13 +6,13 @@ import ServiceAPI from "../ServiceAPI";
 export default class ServerServiceAPI extends ServiceAPI {
 
   static SERVICE_GOT = got.extend({
-    prefixUrl: this._SERVICE_API_ADDRESS,
+    // prefixUrl: this._SERVICE_API_ADDRESS,
     hooks: {
       beforeRequest: [
         async options => {
           const jwt = await this.getCookie("JWT");
-          if(jwt) {
-            options.headers['Authorization'] = jwt;
+          if (jwt) {
+            options.headers['Authorization'] = `Bearer ${jwt}`;
           }
         },
       ],
@@ -22,5 +22,10 @@ export default class ServerServiceAPI extends ServiceAPI {
   static getCookie = async (name: string): Promise<string | undefined> => {
     const cookieStore = await cookies();
     return cookieStore.get(name)?.value;
+  }
+
+  static setCookie = async (name: string, value: string): Promise<void> => {
+    const cookieStore = await cookies();
+    cookieStore.set(name, value);
   }
 }

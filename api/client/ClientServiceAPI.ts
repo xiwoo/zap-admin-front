@@ -12,7 +12,7 @@ export default class ClientServiceAPI extends ServiceAPI{
         async request => {
           const jwt = await this.getCookie("JWT");
           if (jwt) {
-            request.headers.set('Authorization', jwt);
+            request.headers.set('Authorization', `Bearer ${jwt}`);
           }
         },
       ],
@@ -21,5 +21,14 @@ export default class ClientServiceAPI extends ServiceAPI{
 
   static getCookie = (name: string): Promise<string | undefined> => {
     return Promise.resolve(Cookies.get(name));
+  }
+
+  static handleResponse = async <T>(response: Response): Promise<T> => {
+    if (!response.ok) {
+      throw new Error('API 요청 실패');
+    }
+    
+    // console.log(`response: `, response)
+    return await response.json() as T;
   }
 }
