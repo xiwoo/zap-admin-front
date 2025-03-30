@@ -17,8 +17,6 @@ import {
 
 import AppTheme from '@/components/common/AppTheme';
 
-import { SitemarkIcon } from '@/components/auth/CustomIcons';
-
 // ---- UI
 
 import AdminsAuthAPI from '@/api/client/AdminsAuthAPI';
@@ -87,8 +85,8 @@ export default function ChangePassword( ) {
 
   return (
     <>
-      <SitemarkIcon />
-      
+      {/* <SitemarkIcon /> */}
+
       <Typography
         component="h1"
         variant="h4"

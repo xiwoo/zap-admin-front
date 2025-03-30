@@ -20,17 +20,17 @@ interface TypographyProps extends Omit<MuiTypographyProps, 'variant'> {
 }
 
 const variantClasses: Record<Variant, string> = {
-  h1: 'text-[3rem] font-semibold leading-[1.2] tracking-[-0.5px]',
-  h2: 'text-[2.25rem] font-semibold leading-[1.2]',
-  h3: 'text-[1.875rem] leading-[1.2]',
-  h4: 'text-[1.5rem] font-semibold leading-[1.5]',
-  h5: 'text-[1.25rem] font-semibold',
-  h6: 'text-[1.125rem] font-semibold',
-  subtitle1: 'text-[1.125rem]',
-  subtitle2: 'text-[0.875rem] font-medium',
-  body1: 'text-[0.875rem]',
-  body2: 'text-[0.875rem] font-normal',
-  caption: 'text-[0.75rem] font-normal',
+  h1: 'text-5xl leading-[1.2] font-semibold tracking-[-0.5px]',
+  h2: 'text-4xl leading-[1.2] font-semibold',
+  h3: 'text-3xl leading-[1.2]',
+  h4: 'text-2xl leading-[1.5] font-semibold',
+  h5: 'text-xl font-semibold',
+  h6: 'text-lg font-semibold',
+  subtitle1: 'text-lg',
+  subtitle2: 'text-sm font-medium',
+  body1: 'text-sm',
+  body2: 'text-sm font-normal',
+  caption: 'text-xs font-normal',
   inherit: '',
 };
 

@@ -19,7 +19,7 @@ import {
 import Link from '@mui/material/Link';
 
 import ForgotPassword from '@/components/auth/ForgetPassword';
-import { SitemarkIcon } from '@/components/auth/CustomIcons';
+// import { SitemarkIcon } from '@/components/auth/CustomIcons';
 
 
 // ---- UI
@@ -102,7 +102,7 @@ export default function Login( ) {
   return (
     <>
     {/* <AppTheme> */}
-      <SitemarkIcon />
+      {/* <SitemarkIcon /> */}
 
       <Typography
         component="h1"
