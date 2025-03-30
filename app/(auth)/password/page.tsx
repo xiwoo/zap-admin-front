@@ -17,7 +17,7 @@ import { styled } from '@mui/material/styles';
 import AppTheme from '@/components/common/AppTheme';
 import ColorModeSelect from '@/components/ColorModeSelect';
 
-import { SitemarkIcon } from '@/components/login/CustomIcons';
+import { SitemarkIcon } from '@/components/auth/CustomIcons';
 
 // ---- UI
 

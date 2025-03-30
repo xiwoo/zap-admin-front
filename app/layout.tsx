@@ -1,7 +1,8 @@
 import "./globals.css";
 import { Roboto, Geist, Geist_Mono, Inter } from "next/font/google"; // TODO: 안쓰는 폰트 정리하기
 
-import ThemeRegistry from "./ThemeRegistry";
+// import ThemeRegistry from "./ThemeRegistry";
+import { ThemeProvider } from '@/context/ThemeContext';
 
 import type { Metadata } from "next";
 
@@ -37,11 +38,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="en">
-      <ThemeRegistry>
+      <ThemeProvider>
         <body className={`${interSans.variable} ${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`} >
           {children}
         </body>
-      </ThemeRegistry>
+      </ThemeProvider>
     </html>
   );
 }

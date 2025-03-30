@@ -1,6 +1,11 @@
 
 import type { Metadata } from "next";
 
+import AuthContainer from '@/components/auth/AuthContainer';
+import AuthCard from '@/components/auth/AuthCard';
+
+import ColorModeSelect from '@/components/ColorModeSelect';
+
 export const metadata: Metadata = {
   title: "ZAP Dating App Admin",
   description: "ZAP App Admin",
@@ -12,7 +17,12 @@ export default function RootLayout({
 
   return (
     <main>
-      {children}
+      <AuthContainer direction="column" justifyContent="space-between">
+        <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
+        <AuthCard variant="outlined">
+          {children}
+        </AuthCard>
+      </AuthContainer>
     </main>
   );
 }
