@@ -1,7 +1,7 @@
 import got from 'got';
 import { cookies } from 'next/headers'
 
-import ServiceAPI from "../ServiceAPI";
+import ServiceAPI, { CookieOptions } from "../ServiceAPI";
 
 export default class ServerServiceAPI extends ServiceAPI {
 
@@ -24,8 +24,8 @@ export default class ServerServiceAPI extends ServiceAPI {
     return cookieStore.get(name)?.value;
   }
 
-  static setCookie = async (name: string, value: string): Promise<void> => {
+  static setCookie = async (name: string, value: string, options?: Partial<CookieOptions>): Promise<void> => {
     const cookieStore = await cookies();
-    cookieStore.set(name, value);
+    cookieStore.set(name, value, options);
   }
 }

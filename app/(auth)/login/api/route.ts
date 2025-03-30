@@ -2,14 +2,13 @@ import { HTTPError } from 'got';
 
 import AdminsAuthAPI from '@/api/server/AdminsAuthAPI';
 
-
 export const POST = async (request: Request): Promise<Response> => {
   
   try {
     
     const { token, status } = await AdminsAuthAPI.postLogin(await request.json());
     
-    AdminsAuthAPI.setCookie("JWT", token);
+    AdminsAuthAPI.setCookie("JWT", token, { maxAge: 3600 });
     
     return new Response(
       JSON.stringify({ loginStatus: status, }),

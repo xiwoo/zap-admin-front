@@ -4,27 +4,19 @@ import { useRouter } from 'next/navigation';
 
 import { 
   Box,
+  FormControl,
+} from '@mui/material';
+
+import {
   Button,
   Checkbox,
   FormControlLabel,
   FormLabel,
-  FormControl,
-  TextField,
   Typography,
-} from '@mui/material';
-
-import {
-  FormControlLabel as CustomFormControlLabel,
-  Typography as CustomTypography,
-  Button as CustomButton,
-  Checkbox as CustomCheckbox,
-  TextField as CustomTextField,
-  FormLabel as CustomFormLabel,
+  TextField,
 } from '@/components/common/migration';
 
 import Link from '@mui/material/Link';
-
-import AppTheme from '@/components/common/AppTheme';
 
 import ForgotPassword from '@/components/auth/ForgetPassword';
 import { SitemarkIcon } from '@/components/auth/CustomIcons';
@@ -35,7 +27,7 @@ import { SitemarkIcon } from '@/components/auth/CustomIcons';
 import AdminsAuthAPI from '@/api/client/AdminsAuthAPI';
 
 
-export default function SignIn( ) {
+export default function Login( ) {
 
   const router = useRouter();
 
@@ -112,13 +104,13 @@ export default function SignIn( ) {
     {/* <AppTheme> */}
       <SitemarkIcon />
 
-      <CustomTypography
+      <Typography
         component="h1"
         variant="h4"
         sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
       >
         Sign in
-      </CustomTypography>
+      </Typography>
 
       <Box
         component="form"
@@ -132,8 +124,8 @@ export default function SignIn( ) {
         }}
       >
         <FormControl>
-          <CustomFormLabel htmlFor="identify">ID</CustomFormLabel>
-          <CustomTextField
+          <FormLabel htmlFor="identify" color='secondary' >ID</FormLabel>
+          <TextField
             id="identify"
             type="text"
             name="identify"
@@ -147,8 +139,8 @@ export default function SignIn( ) {
         </FormControl>
             
         <FormControl>
-          <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
-          <CustomTextField
+          <FormLabel htmlFor="password" color='secondary' >Password</FormLabel>
+          <TextField
             error={passwordError}
             helperText={passwordErrorMessage}
             name="password"
@@ -164,33 +156,20 @@ export default function SignIn( ) {
           />
         </FormControl>
 
-        {/* <FormControlLabel
+        <FormControlLabel
           control={<Checkbox value="remember" color="primary" />}
-          label="Remember me"
-        /> */}
-
-        <CustomFormControlLabel
-          control={<CustomCheckbox value="remember" color="primary" />}
           label="Remember me"
         />
         <ForgotPassword open={open} handleClose={handleClose} />
         
-        {/* <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          onClick={validateInputs}
-        >
-          Sign in
-        </Button> */}
-        <CustomButton
+        <Button
           type="submit"
           fullWidth
           variant="contained"
           onClick={validateInputs}
         >
           New Sign in
-        </CustomButton>
+        </Button>
 
         <Link
           component="button"
